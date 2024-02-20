@@ -11,9 +11,18 @@ function Multiply(widthConteiner, coordenadasArray, n) {
         // Duplicar el objeto original
         var dup = objeto.duplicate();
 
-        // Calcular el factor de escala
+        // Determinar si el ancho o la altura es mayor y calcular el factor de escala en consecuencia
         var WidthInicial = objeto.width;
-        var ScaleFactor = ((widthConteiner / WidthInicial) * 100) - 1;
+        var HeightInicial = objeto.height;
+        var ScaleFactor;
+
+        if (WidthInicial >= HeightInicial) {
+            // El ancho es mayor o igual que la altura
+            ScaleFactor = ((widthConteiner / WidthInicial) * 100) - 1;
+        } else {
+            // La altura es mayor que el ancho
+            ScaleFactor = ((widthConteiner / HeightInicial) * 100) - 1;
+        }
 
         // Aplicar la escala al objeto duplicado
         dup.resize(ScaleFactor, ScaleFactor, true, true, true, true, null, Transformation.TOP);
@@ -36,7 +45,3 @@ function Multiply(widthConteiner, coordenadasArray, n) {
     // Eliminar el objeto original
     //objeto.remove();
 }
-
-
-
-
